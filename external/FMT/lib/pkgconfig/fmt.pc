@@ -1,0 +1,11 @@
+prefix=D:/clion/fmt-10.1.1/FMT
+exec_prefix=D:/clion/fmt-10.1.1/FMT
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: fmt
+Description: A modern formatting library
+Version: 10.1.1
+Libs: -L${libdir} -lfmtd
+Cflags: -I${includedir}
+

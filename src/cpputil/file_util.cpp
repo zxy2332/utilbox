@@ -6,7 +6,7 @@
 
 #include <iostream>
 
-namespace util {
+namespace zxy::util {
     std::string CPPUTIL_EXPORT file_contents(const std::string &file_name) {
         std::ifstream ifs(std::filesystem::u8path(file_name), std::ios_base::binary);
         if (!ifs) {

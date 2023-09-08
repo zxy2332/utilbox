@@ -13,6 +13,6 @@ target_include_directories(${PROJECT_NAME}
         ${CMAKE_SOURCE_DIR}/src/cpputil
 )
 target_link_libraries(${PROJECT_NAME}
-    cpputil
+        PRIVATE cpputil
 )
 

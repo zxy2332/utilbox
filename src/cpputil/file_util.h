@@ -1,7 +1,7 @@
 #pragma once
 #include "cpputil_export.h"
 #include <string>
-namespace util {
+namespace zxy::util {
     //读取文件内容
     CPPUTIL_EXPORT std::string file_contents(const std::string &file_name);
     //string转wstring
