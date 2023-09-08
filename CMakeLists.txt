@@ -11,6 +11,9 @@ if(ReleaseWithDebug)
     message("Release下带调试信息")
 endif()
 
+#设置输出路径
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/output/bin)
+
 INCLUDE(GenerateExportHeader)
 
 add_subdirectory(src)
