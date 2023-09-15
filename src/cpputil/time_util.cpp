@@ -3,7 +3,7 @@
 //
 
 #include "time_util.h"
-
+#include "ZTimer.hpp"
 #include "fmt/format.h"
 #include "fmt/chrono.h"
 
@@ -38,5 +38,35 @@ namespace zxy::util{
     std::string CompactTimeString(const
                                          std::chrono::system_clock::time_point& tp) {
         return util::TimeString("{:%Y%m%d%H%M%S}", tp);
+    }
+
+    ZTimer::ZTimer() {
+        impl = std::make_unique<ZTimerPrivate>();
+    }
+
+    ZTimer::ZTimer(std::chrono::milliseconds sleep_time, std::function<void()> func) {
+        impl = std::make_unique<ZTimerPrivate>(sleep_time,func);
+    }
+
+    ZTimer::~ZTimer() {
+
+    }
+
+    void ZTimer::SetTimeOutFunc(std::function<void()> func) {
+        if(impl){
+            return impl->SetTimeOutFunc(func);
+        }
+    }
+
+    void ZTimer::Start(std::chrono::milliseconds sleep_time) {
+        if(impl){
+            return impl->Start(sleep_time);
+        }
+    }
+
+    void ZTimer::Stop() {
+        if(impl){
+            return impl->Stop();
+        }
     }
 };
