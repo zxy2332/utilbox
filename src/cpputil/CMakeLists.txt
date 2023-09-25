@@ -31,4 +31,4 @@ generate_export_header(${PROJECT_NAME})
 set(HEADER_FILES file_util.h time_util.h)
 
 
-install_func(${HEADER_FILES})
+#install_func(${HEADER_FILES})
