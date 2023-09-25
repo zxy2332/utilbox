@@ -1,14 +1,16 @@
 cmake_minimum_required(VERSION 3.26)
 
 
-project(cpputil VERSION 0.1.1 LANGUAGES C CXX)
+project(cpputil VERSION 0.1.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 
 file(GLOB SRC *.cpp *.cc *.h *.hpp)
 
 
-find_package(fmt  REQUIRED
+
+
+find_package(fmt REQUIRED
         PATHS ${CMAKE_SOURCE_DIR}/external/FMT
 )
 
@@ -19,62 +21,14 @@ target_include_directories(${PROJECT_NAME}
 )
 
 target_link_libraries(${PROJECT_NAME}
-        PRIVATE fmt::fmt
+        PRIVATE  fmt::fmt
 )
 
 generate_export_header(${PROJECT_NAME})
 
-#######################################安装部分#################################
-# 设置安装目标
-
-install(
-        TARGETS ${PROJECT_NAME}                         # 安装目标名称
-        EXPORT ${PROJECT_NAME}Targets                   # 导出项目名
-        PUBLIC_HEADER DESTINATION include               # 指定头文件目录
-        RUNTIME DESTINATION bin  # 二进制执行文件目录
-        ARCHIVE DESTINATION lib  # 静态库目录
-        LIBRARY DESTINATION lib  # 动态库目录
-)
-
 
 # 添加头文件的安装目标
-set(HEADER_FILES file_util.h
-                         time_util.h
-)
-install(FILES ${HEADER_FILES} DESTINATION include)
+set(HEADER_FILES file_util.h time_util.h)
 
 
-install(
-        EXPORT ${PROJECT_NAME}Targets                   # 导出项目名
-        FILE ${PROJECT_NAME}Targets.cmake               # 生成xxxTargets.cmake文件
-        # NAMESPACE Ftest::                               # 添加命名空间
-        DESTINATION lib/cmake/${PROJECT_NAME}                                # 指定相对路径cmake目录
-)
-
-include(CMakePackageConfigHelpers)
-
-configure_package_config_file (                     # 生成 xxxConfig.cmake文件
-        cmake/Config.cmake.in ${PROJECT_NAME}Config.cmake   # 根据.make.in 生成对应Config.cmake文件
-        INSTALL_DESTINATION lib/cmake/${PROJECT_NAME}                       # 安装目录
-)
-
-write_basic_package_version_file(                   # 生成 xxxConfigVersion.cmake文件
-        ${PROJECT_NAME}ConfigVersion.cmake              # 指定文件名
-        VERSION ${PACKAGE_VERSION}                      # 指定版本号
-        COMPATIBILITY SameMajorVersion                  # 指定兼容性
-)
-
-
-install(
-        FILES
-        ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}Config.cmake         # 复制xxxConfig.cmake文件到安装目录的cmake
-        ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}ConfigVersion.cmake  # 复制xxxConfigVersion.cmake文件到安装目录的cmake
-        DESTINATION lib/cmake/${PROJECT_NAME}                                # 指定相对路径
-)
-
-
-install(
-        DIRECTORY
-        #config/                                         # 复制配置文件夹
-        DESTINATION static                              # 指定目录
-)
+install_func(${HEADER_FILES})
