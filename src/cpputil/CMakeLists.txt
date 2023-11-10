@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.26)
+cmake_minimum_required(VERSION 3.14)
 
 
 project(cpputil VERSION 0.1.1 LANGUAGES CXX)
