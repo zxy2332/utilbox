@@ -1,0 +1,17 @@
+/.build
+*_export.h
+build
+build64
+build64_new
+x64
+external/Qt5
+external/Qt5.14
+external/Qt5.11
+external/grpc
+external/taskflow
+external/taskflow.zip
+external/modelmanager
+build64_new/
+cqsim-behaviorcreator.zip
+*build*
+.idea
