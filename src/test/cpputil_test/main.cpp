@@ -7,6 +7,10 @@ using namespace zxy;
 
 int TestTime();
 int main(int argc,char **argv){
+
+
+
+    return  0;
     try{
         util::write_file("只需考虑成为.txt","awdaaaaaaa大卫卡梅伦看啊达瓦大");
         TestTime();
