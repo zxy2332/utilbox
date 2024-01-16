@@ -14,7 +14,9 @@ find_package(fmt REQUIRED
         PATHS ${CMAKE_SOURCE_DIR}/external/FMT
 )
 
-add_library(${PROJECT_NAME} SHARED ${SRC})
+add_library(${PROJECT_NAME} SHARED ${SRC}
+        util.cpp
+        util.h)
 
 target_include_directories(${PROJECT_NAME}
         PUBLIC $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}>
@@ -28,7 +30,7 @@ generate_export_header(${PROJECT_NAME})
 
 
 # 添加头文件的安装目标
-set(HEADER_FILES file_util.h time_util.h any.h)
+set(HEADER_FILES file_util.h time_util.h any.h util.h)
 
 
 #install_func(${HEADER_FILES})
