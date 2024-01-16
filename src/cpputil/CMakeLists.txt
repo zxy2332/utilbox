@@ -28,7 +28,7 @@ generate_export_header(${PROJECT_NAME})
 
 
 # 添加头文件的安装目标
-set(HEADER_FILES file_util.h time_util.h)
+set(HEADER_FILES file_util.h time_util.h any.h)
 
 
 #install_func(${HEADER_FILES})
